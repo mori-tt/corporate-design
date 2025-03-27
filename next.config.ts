@@ -9,6 +9,20 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // 静的アセットのキャッシュポリシーを設定
+  headers: async () => {
+    return [
+      {
+        source: "/(.*\\.(?:jpg|jpeg|png|gif|svg|ico|css|js)$)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
