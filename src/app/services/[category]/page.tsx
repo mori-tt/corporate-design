@@ -1,8 +1,10 @@
 import { Metadata } from "next";
-import ServiceWrapper from "./ServiceWrapper";
+import { notFound } from "next/navigation";
+import CategoryPage from "./CategoryPage";
 
 // 静的生成設定
 export const dynamic = "force-static";
+export const revalidate = false;
 
 // サービスカテゴリのリスト
 const serviceCategories = ["web", "branding", "ui", "graphic", "motion"];
@@ -24,11 +26,9 @@ export async function generateStaticParams() {
 }
 
 // メタデータ生成
-export async function generateMetadata(
-  props: {
-    params: Promise<{ category: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const category = params.category;
 
@@ -46,12 +46,18 @@ export async function generateMetadata(
   };
 }
 
-// ページコンポーネント - 別コンポーネントに委譲
+// ページコンポーネント
 export default async function Page({
   params,
 }: {
   params: Promise<{ category: string }>;
 }) {
   const { category } = await params;
-  return <ServiceWrapper category={category} />;
+
+  // 有効なカテゴリかチェック
+  if (!serviceCategories.includes(category)) {
+    notFound();
+  }
+
+  return <CategoryPage category={category} />;
 }

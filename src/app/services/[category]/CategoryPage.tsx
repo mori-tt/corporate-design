@@ -198,95 +198,97 @@ const services = {
         title: "修正とファイナライズ",
         icon: <MessageSquare size={24} />,
         description:
-          "フィードバックに基づいて微調整を行い、最終データを様々な形式で提供します。",
+          "クライアントのフィードバックを反映し、最終的なデザインを完成させます。",
       },
     ],
     benefits: [
       {
-        title: "ブランドの視覚的強化",
-        description: "魅力的なデザインで、ブランドの印象を高めます。",
+        title: "ブランドの一貫性",
+        description:
+          "すべての視覚的要素で一貫したブランドイメージを構築します。",
       },
       {
-        title: "マーケティング効果の向上",
-        description: "効果的なデザインで、マーケティングの成果を高めます。",
+        title: "メッセージの明確化",
+        description: "視覚的に情報を整理し、メッセージを明確に伝えます。",
       },
       {
-        title: "商品価値の向上",
-        description: "魅力的なパッケージデザインで、商品価値を高めます。",
+        title: "記憶に残る印象",
+        description: "独自のビジュアルで、長期的な印象を残します。",
       },
     ],
     technologies: [
-      "Adobe Illustrator",
       "Adobe Photoshop",
+      "Adobe Illustrator",
       "Adobe InDesign",
-      "Figma",
+      "Affinity Designer",
     ],
     icon: <PenTool size={24} />,
   },
   motion: {
     title: "モーションデザイン",
-    description: "動きのある魅力的なコンテンツ制作",
+    description: "動きのあるビジュアルで魅力的なコンテンツを制作",
     image: "/services/motion.jpg",
     features: [
+      "アニメーションロゴ",
       "プロモーションビデオ",
-      "アニメーション制作",
-      "モーショングラフィックス",
+      "インタラクティブコンテンツ",
     ],
     process: [
       {
-        title: "コンセプト立案",
+        title: "コンセプト策定",
         icon: <ClipboardEdit size={24} />,
         description:
-          "目的とメッセージを定義し、ストーリーボードやコンセプトスケッチを作成します。",
+          "目的、メッセージ、ターゲットを明確にし、ムードボードやコンセプトスケッチを作成します。",
       },
       {
-        title: "アニメーション設計",
+        title: "ストーリーボード作成",
         icon: <Clapperboard size={24} />,
         description:
-          "動きのスタイル、タイミング、トランジションを設計し、アニマティック（簡易アニメーション）を作成します。",
+          "シーンごとの流れや動きを視覚化し、全体の構成を計画します。",
       },
       {
-        title: "モーション制作",
+        title: "アニメーション制作",
         icon: <Play size={24} />,
         description:
-          "高品質なアニメーションを制作し、サウンドデザインとの同期を行います。",
+          "キーフレームを設定し、動きのタイミングやイージングを調整しながらアニメーションを制作します。",
       },
       {
-        title: "書き出しと納品",
+        title: "サウンドと効果の追加",
         icon: <Upload size={24} />,
         description:
-          "最終確認後、様々なプラットフォーム用に最適化して書き出し、納品します。",
+          "音楽やサウンドエフェクトを追加し、視覚効果と組み合わせて完成度を高めます。",
       },
     ],
     benefits: [
       {
+        title: "注目度の向上",
+        description: "動きのあるコンテンツで、ユーザーの注目を集めます。",
+      },
+      {
+        title: "複雑な情報の伝達",
+        description: "アニメーションで、複雑な情報をわかりやすく伝えます。",
+      },
+      {
         title: "エンゲージメントの向上",
-        description: "魅力的な動画コンテンツで、ユーザーの興味を引きます。",
-      },
-      {
-        title: "ブランドストーリーの伝達",
-        description: "効果的な動画で、ブランドのストーリーを伝えます。",
-      },
-      {
-        title: "SNSでの拡散性",
-        description: "魅力的な動画で、SNSでの拡散を促進します。",
+        description: "インタラクティブな要素で、ユーザーの関与を高めます。",
       },
     ],
     technologies: [
-      "After Effects",
-      "Premiere Pro",
+      "Adobe After Effects",
       "Cinema 4D",
-      "DaVinci Resolve",
+      "Blender",
+      "Lottie",
+      "GSAP",
     ],
     icon: <Film size={24} />,
   },
 };
 
-type ServiceContentProps = {
+type CategoryPageProps = {
   category: string;
 };
 
-export default function ServiceContent({ category }: ServiceContentProps) {
+export default function CategoryPage({ category }: CategoryPageProps) {
   const service = services[category as keyof typeof services];
 
   if (!service) {
