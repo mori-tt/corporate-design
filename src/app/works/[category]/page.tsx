@@ -2,6 +2,10 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CategoryPage from "./CategoryPage";
 
+// 静的生成設定
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export const metadata: Metadata = {
   title: "実績 | DESIGN STUDIO",
   description: "DESIGN STUDIOの実績一覧をご覧いただけます。",
@@ -36,7 +40,7 @@ type CategoryParam = {
 };
 
 // 静的生成のためのパラメータ
-export function generateStaticParams() {
+export async function generateStaticParams() {
   // カテゴリページのパラメータ
   const categoryParams: CategoryParam[] = validCategories.map((category) => ({
     category,
@@ -55,21 +59,22 @@ export function generateStaticParams() {
   return [...categoryParams, ...imageParams];
 }
 
-type PageProps = {
-  params: { category: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
+  const { category } = await params;
 
-export default function CategoryPageWrapper({ params }: PageProps) {
   // 画像リクエストの場合は404を返さない
-  if (params.category.endsWith(".jpg")) {
+  if (category.endsWith(".jpg")) {
     return null;
   }
 
   // カテゴリが有効でない場合は404を返す
-  if (!validCategories.includes(params.category)) {
+  if (!validCategories.includes(category)) {
     notFound();
   }
 
-  return <CategoryPage category={params.category} />;
+  return <CategoryPage category={category} />;
 }

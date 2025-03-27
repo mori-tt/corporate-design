@@ -48,7 +48,8 @@ const works: Record<string, Work> = {
   "natural-food-branding": {
     title: "ナチュラルフードブランディング",
     description: "オーガニック食品ブランドのブランディングとパッケージデザイン",
-    image: "/works/natural-food-branding.jpg",
+    image:
+      "https://images.unsplash.com/photo-1555530001-acee1750bdcc?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "natural-food-branding",
     year: "2022",
     client: "Natural Foods, Inc.",
@@ -71,15 +72,15 @@ const works: Record<string, Work> = {
       ],
       projectImages: [
         {
-          url: "/works/natural-food-branding-1.jpg",
+          url: "https://images.unsplash.com/photo-1555530001-acee1750bdcc?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "ブランドロゴデザイン",
         },
         {
-          url: "/works/natural-food-branding-2.jpg",
+          url: "https://images.unsplash.com/photo-1555530001-acee1750bdcc?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "パッケージデザイン",
         },
         {
-          url: "/works/natural-food-branding-3.jpg",
+          url: "https://images.unsplash.com/photo-1555530001-acee1750bdcc?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "ブランドガイドライン",
         },
       ],
@@ -88,7 +89,8 @@ const works: Record<string, Work> = {
   "green-app-ui": {
     title: "グリーンアプリUI",
     description: "環境配慮型アプリケーションのUIデザイン",
-    image: "/works/green-app-ui.jpg",
+    image:
+      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "green-app-ui",
     year: "2023",
     client: "Green Solutions Co., Ltd.",
@@ -106,15 +108,15 @@ const works: Record<string, Work> = {
       technologies: ["Figma", "Protopie", "Adobe Illustrator", "User Testing"],
       projectImages: [
         {
-          url: "/works/green-app-ui-1.jpg",
+          url: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "アプリホーム画面",
         },
         {
-          url: "/works/green-app-ui-2.jpg",
+          url: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "活動トラッキング機能",
         },
         {
-          url: "/works/green-app-ui-3.jpg",
+          url: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "コミュニティページ",
         },
       ],
@@ -123,7 +125,8 @@ const works: Record<string, Work> = {
   "able-corp-website": {
     title: "エイブルコーポレーションウェブサイト",
     description: "企業ウェブサイトのリニューアルデザイン",
-    image: "/works/able-corp-website.jpg",
+    image:
+      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2555&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "able-corp-website",
     year: "2023",
     client: "Able Corporation",
@@ -141,15 +144,15 @@ const works: Record<string, Work> = {
       technologies: ["Next.js", "Figma", "GSAP Animation", "Responsive Design"],
       projectImages: [
         {
-          url: "/works/able-corp-website-1.jpg",
+          url: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2555&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "トップページ",
         },
         {
-          url: "/works/able-corp-website-2.jpg",
+          url: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2555&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "製品紹介ページ",
         },
         {
-          url: "/works/able-corp-website-3.jpg",
+          url: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2555&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "お問い合わせページ",
         },
       ],
@@ -158,7 +161,8 @@ const works: Record<string, Work> = {
   "urban-style-branding": {
     title: "アーバンスタイルブランディング",
     description: "都市型ライフスタイルブランドのブランディング",
-    image: "/works/urban-style-branding.jpg",
+    image:
+      "https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "urban-style-branding",
     year: "2022",
     client: "URBAN Co.",
@@ -181,15 +185,15 @@ const works: Record<string, Work> = {
       ],
       projectImages: [
         {
-          url: "/works/urban-style-branding-1.jpg",
+          url: "https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "ブランドロゴ展開",
         },
         {
-          url: "/works/urban-style-branding-2.jpg",
+          url: "https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "プロモーション素材",
         },
         {
-          url: "/works/urban-style-branding-3.jpg",
+          url: "https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "パッケージデザイン",
         },
       ],
@@ -198,7 +202,8 @@ const works: Record<string, Work> = {
   "tech-innovation-website": {
     title: "テックイノベーションウェブサイト",
     description: "テクノロジー企業のウェブサイトデザイン",
-    image: "/works/tech-innovation-website.jpg",
+    image:
+      "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "tech-innovation-website",
     year: "2022",
     client: "Tech Innovation Inc.",
@@ -221,15 +226,15 @@ const works: Record<string, Work> = {
       ],
       projectImages: [
         {
-          url: "/works/tech-innovation-website-1.jpg",
+          url: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "ホームページデザイン",
         },
         {
-          url: "/works/tech-innovation-website-2.jpg",
+          url: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "製品詳細ページ",
         },
         {
-          url: "/works/tech-innovation-website-3.jpg",
+          url: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           caption: "テクノロジー説明セクション",
         },
       ],
@@ -238,7 +243,7 @@ const works: Record<string, Work> = {
   "health-app-ux": {
     title: "ヘルスアプリUX",
     description: "ヘルスケアアプリケーションのUXデザイン",
-    image: "/works/health-app-ux.jpg",
+    image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
     category: "health-app-ux",
     year: "2021",
     client: "Health+ Inc.",
@@ -262,15 +267,15 @@ const works: Record<string, Work> = {
       ],
       projectImages: [
         {
-          url: "/works/health-app-ux-1.jpg",
+          url: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
           caption: "UIデザイン改善前後の比較",
         },
         {
-          url: "/works/health-app-ux-2.jpg",
+          url: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
           caption: "ユーザーフロー最適化",
         },
         {
-          url: "/works/health-app-ux-3.jpg",
+          url: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
           caption: "フィードバック実装プロセス",
         },
       ],

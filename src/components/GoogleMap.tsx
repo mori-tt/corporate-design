@@ -1,16 +1,28 @@
 "use client";
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface GoogleMapProps {
   address: string;
   address2: string;
   postcode: string;
+  myMapPb?: string;
 }
 
-const GoogleMap = ({ address, address2, postcode }: GoogleMapProps) => {
+const GoogleMap = ({
+  address,
+  address2,
+  postcode,
+  myMapPb,
+}: GoogleMapProps) => {
   // 住所をエンコードしてGoogle Maps埋め込みURLを作成
-  const encodedAddress = encodeURIComponent(address);
-  const mapEmbedUrl = `https://maps.google.com/maps?q=${encodedAddress}&t=m&z=16&output=embed&iwloc=near`;
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+  const encodedAddress = encodeURIComponent(`${address}`);
+
+  // pbパラメータが提供されている場合はそれを使用、ない場合は通常のマップURLを使用
+  const mapSrc = myMapPb
+    ? `https://www.google.com/maps/embed?pb=${myMapPb}`
+    : `https://maps.google.com/maps?q=${encodedAddress}&t=m&z=16&output=embed&markers=color:red%7C${encodedAddress}`;
 
   return (
     <div
@@ -19,9 +31,11 @@ const GoogleMap = ({ address, address2, postcode }: GoogleMapProps) => {
     >
       <div className="relative w-full h-full">
         <iframe
-          src={mapEmbedUrl}
+          src={mapSrc}
           title="Google Maps"
           className="absolute inset-0 w-full h-full border-0"
+          width="100%"
+          height="100%"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
@@ -35,30 +49,17 @@ const GoogleMap = ({ address, address2, postcode }: GoogleMapProps) => {
               {postcode} {address} {address2}
             </p>
           </div>
-          <a
-            href={googleMapsUrl}
+        </div>
+        <Button variant="link" className="h-auto p-0 mt-2" asChild>
+          <Link
+            href={`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium px-3 py-1.5 bg-black text-white hover:bg-neutral-800 cursor-pointer"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-            開く
-          </a>
-        </div>
+            <ExternalLink className="h-4 w-4 mr-1" />
+            GoogleMap
+          </Link>
+        </Button>
       </div>
     </div>
   );

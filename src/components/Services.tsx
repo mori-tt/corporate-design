@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { Globe, Palette, Award, PenTool, Film } from "lucide-react";
 
 const ServiceCard = ({
   title,
@@ -47,112 +48,31 @@ const Services = () => {
           <ServiceCard
             title="Webデザイン"
             description="魅力的で使いやすいWebサイトで、訪問者を顧客に変える効果的なデザインを提供します。"
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect width="18" height="18" x="3" y="3" rx="2" />
-                <path d="M3 9h18" />
-                <path d="M9 21V9" />
-              </svg>
-            }
+            icon={<Globe size={24} />}
             href="/services/web"
           />
           <ServiceCard
             title="UI/UXデザイン"
             description="ユーザーのニーズを理解し、直感的で美しいインターフェースを設計します。"
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect width="18" height="18" x="3" y="3" rx="2" />
-                <circle cx="9" cy="9" r="2" />
-                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-              </svg>
-            }
+            icon={<Palette size={24} />}
             href="/services/ui"
           />
           <ServiceCard
             title="ブランディング"
             description="強力なブランドアイデンティティを構築し、競合から際立つための戦略を提供します。"
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m9.5 7.5-2 2a4.95 4.95 0 1 0 7 7l2-2a4.95 4.95 0 1 0-7-7Z" />
-                <path d="M14 6.5v10" />
-                <path d="M10 7.5v10" />
-                <path d="m16 7 1-5 1.37.68A3 3 0 0 0 19.7 3H21v1.3c0 .46.1.92.32 1.33L22 7l-5 1" />
-                <path d="m8 17-1 5-1.37-.68A3 3 0 0 0 4.3 21H3v-1.3a3 3 0 0 0-.32-1.33L2 17l5-1" />
-              </svg>
-            }
+            icon={<Award size={24} />}
             href="/services/branding"
           />
           <ServiceCard
             title="グラフィックデザイン"
             description="デザインの視覚的な要素を作成し、ブランドのイメージを固める専門家です。"
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M13.5 3H12H8C6.34 3 5 4.34 5 6v15c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V9.5L13.5 3Z" />
-                <path d="M13 3v7h7" />
-              </svg>
-            }
+            icon={<PenTool size={24} />}
             href="/services/graphic"
           />
           <ServiceCard
             title="モーションデザイン"
             description="モーショングラフィックを使用して、ブランドのイメージを固める専門家です。"
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="M5 12h14" />
-              </svg>
-            }
+            icon={<Film size={24} />}
             href="/services/motion"
           />
         </div>

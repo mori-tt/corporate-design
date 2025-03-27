@@ -24,7 +24,8 @@ const works = [
     id: "able-corp-website",
     title: "ABLE Corp. ウェブサイトリニューアル",
     category: "Webデザイン",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    image:
+      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2555&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "企業イメージの刷新に合わせたウェブサイトの全面リニューアル。モダンでユーザーフレンドリーなデザインにより、ユーザーエンゲージメントとコンバージョン率が向上。",
     year: "2023",
@@ -33,7 +34,8 @@ const works = [
     id: "green-app-ui",
     title: "GREEN アプリUIデザイン",
     category: "UIデザイン",
-    image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960",
+    image:
+      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "サステナビリティに特化したライフスタイルアプリのUIデザイン。直感的な操作性と美しいビジュアルで、アプリの使用継続率が大幅に向上。",
     year: "2023",
@@ -42,7 +44,8 @@ const works = [
     id: "natural-food-branding",
     title: "Natural Food ブランディング",
     category: "ブランディング",
-    image: "https://images.unsplash.com/photo-1475750632132-0e91befbefed",
+    image:
+      "https://images.unsplash.com/photo-1555530001-acee1750bdcc?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "オーガニック食品ブランドの統合的なブランディング。ロゴ、パッケージデザイン、ウェブサイトなど一貫したビジュアルアイデンティティを構築し、ブランド認知度を高めた。",
     year: "2022",
@@ -51,7 +54,8 @@ const works = [
     id: "tech-innovation-website",
     title: "Tech Innovation ウェブデザイン",
     category: "Webデザイン",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+    image:
+      "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "テクノロジースタートアップ企業の革新的なウェブサイトデザイン。最新のデザイントレンドを取り入れながら、製品の特徴を効果的に伝えるサイト構成を実現。",
     year: "2022",
@@ -60,7 +64,8 @@ const works = [
     id: "urban-style-branding",
     title: "Urban Style ブランドアイデンティティ",
     category: "ブランディング",
-    image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329",
+    image:
+      "https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "都市型ライフスタイルブランドのアイデンティティ開発。若年層をターゲットにした現代的でエッジの効いたデザインで、SNSでの話題性を高めた。",
     year: "2022",
@@ -69,7 +74,7 @@ const works = [
     id: "health-app-ux",
     title: "Health+ アプリUX改善",
     category: "UIデザイン",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
+    image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
     description:
       "ヘルスケアアプリのユーザーエクスペリエンス改善プロジェクト。ユーザーテストに基づき、インターフェースを最適化し、使いやすさを向上させた。",
     year: "2021",
@@ -128,7 +133,7 @@ export default function WorksPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredWorks.map((work) => (
                 <div key={work.id} className="group">
-                  <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
                     <div className="aspect-video relative overflow-hidden">
                       <img
                         src={work.image}
@@ -136,7 +141,7 @@ export default function WorksPage() {
                         className="absolute w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <div className="p-6">
+                    <div className="p-6 flex flex-col flex-grow">
                       <div className="flex justify-between items-center mb-2">
                         <div className="text-sm text-black">
                           {work.category}
@@ -148,10 +153,10 @@ export default function WorksPage() {
                       <h3 className="text-xl font-semibold mb-2 group-hover:text-black transition-colors">
                         {work.title}
                       </h3>
-                      <p className="text-neutral-600 text-sm mb-4">
+                      <p className="text-neutral-600 text-sm mb-4 flex-grow">
                         {work.description}
                       </p>
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center mt-auto">
                         <Link href={`/works/${work.id}`}>
                           <Button
                             variant="link"

@@ -1,55 +1,24 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import GoogleMapWrapper from "./GoogleMapWrapper";
+import { MapPin, Briefcase, Phone } from "lucide-react";
 
 const accessInfo = [
   {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="text-black"
-      >
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-        <circle cx="12" cy="10" r="3" />
-      </svg>
-    ),
+    icon: <MapPin className="text-black" />,
     title: "所在地",
     content: (
       <>
         〒150-0002
         <br />
-        東京都渋谷区渋谷1-1-1
+        東京都渋谷区******
         <br />
-        デザインビル 5F
+        ****ビル1F
       </>
     ),
   },
   {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="text-black"
-      >
-        <path d="M5.2 22h13.6a2 2 0 0 0 2-1.6L22 7H2l1.2 13.4a2 2 0 0 0 2 1.6Z" />
-        <path d="M6 7V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3" />
-      </svg>
-    ),
+    icon: <Briefcase className="text-black" />,
     title: "営業時間",
     content: (
       <>
@@ -60,22 +29,7 @@ const accessInfo = [
     ),
   },
   {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="text-black"
-      >
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-      </svg>
-    ),
+    icon: <Phone className="text-black" />,
     title: "お電話",
     content: (
       <>
@@ -85,27 +39,11 @@ const accessInfo = [
       </>
     ),
   },
-  {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="text-black"
-      >
-        <rect width="20" height="16" x="2" y="4" rx="2" />
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-      </svg>
-    ),
-    title: "メール",
-    content: "info@designstudio.jp",
-  },
+  // {
+  //   icon: <Mail className="text-black" />,
+  //   title: "メール",
+  //   content: "info@designstudio.jp",
+  // },
 ];
 
 const transportationInfo = [
@@ -119,7 +57,7 @@ const transportationInfo = [
   },
   {
     type: "バス",
-    routes: ["渋谷駅西口バスターミナルより徒歩3分"],
+    routes: ["渋谷駅西口バスターミナルより徒歩5分"],
   },
   {
     type: "車",
