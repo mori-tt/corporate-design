@@ -14,7 +14,7 @@ const Header = () => {
       <header className="border-b bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-20">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="font-bold text-xl flex">
-            <img src="/logo.svg" alt="DESIGN STUDIO" width={30} height={30} />
+            <img src="logo.svg" alt="DESIGN STUDIO" width={30} height={30} />
             <span className="ml-2">DESIGN STUDIO</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6 lg:gap-12">
