@@ -21,7 +21,7 @@ const Hero = () => {
             </div>
 
             {/* デスクトップ用デザイン要素 */}
-            <div className="hidden lg:block absolute right-0 top-0 w-1/2 h-full">
+            <div className="hidden lg:block absolute right-0 2xl:right-30  top-0 w-1/2 h-full">
               <div className="relative w-full h-[500px]">
                 <div className="absolute top-0 right-0 w-72 h-72 bg-black/5 rounded-2xl transform rotate-6 shadow-lg"></div>
                 <div className="absolute top-20 right-32 w-64 h-64 bg-black/10 rounded-2xl transform -rotate-12"></div>
