@@ -13,10 +13,10 @@ const Hero = () => {
             {/* モバイル用デザイン要素 */}
             <div className="lg:hidden">
               <div className="relative w-full max-w-md h-[250px] mx-auto">
-                <div className="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 bg-black/5 rounded-2xl transform rotate-6 shadow-lg"></div>
-                <div className="absolute top-8 right-12 md:top-16 md:right-24 w-32 h-32 md:w-56 md:h-56 bg-black/10 rounded-2xl transform -rotate-12"></div>
-                <div className="absolute top-16 right-4 md:top-32 md:right-8 w-44 h-44 md:w-64 md:h-64 bg-neutral-200/50 rounded-2xl transform rotate-45"></div>
-                <div className="absolute top-6 right-10 md:top-12 md:right-16 w-36 h-36 md:w-64 md:h-64 border-2 border-black/20 rounded-2xl"></div>
+                <div className="absolute top-0 right-0 w-40 h-40 bg-black/5 rounded-2xl transform rotate-6 shadow-lg"></div>
+                <div className="absolute top-8 right-12 md:top-16 w-32 h-32 bg-black/10 rounded-2xl transform -rotate-12"></div>
+                <div className="absolute top-16 right-4 md:top-32 w-44 h-44 bg-neutral-200/50 rounded-2xl transform rotate-45"></div>
+                <div className="absolute top-6 right-10 md:top-12 w-36 h-36  border-2 border-black/20 rounded-2xl"></div>
               </div>
             </div>
 
@@ -33,18 +33,18 @@ const Hero = () => {
 
           {/* テキストコンテンツ - デザイン要素の上に表示 */}
           <div className="relative z-10 pt-32 lg:pt-0">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              <div className="max-w-xl mx-auto lg:mx-0">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight tracking-tight text-center lg:text-left">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center 2xl:max-w-7xl 2xl:mx-auto">
+              <div className="max-w-xl mx-auto lg:mx-0 2xl:mx-auto">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight tracking-tight text-center lg:text-left 2xl:text-center">
                   デザインの力で
                   <br />
                   <span className="text-black">ビジネスに革新</span>を
                 </h1>
-                <p className="text-lg text-neutral-700 mb-6 md:mb-8 text-center lg:text-left">
+                <p className="text-lg text-neutral-700 mb-6 md:mb-8 text-center lg:text-left 2xl:text-center">
                   私たちは単なるデザイン会社ではありません。ブランドの価値を高め、
                   ユーザー体験を向上させ、ビジネスの成長を加速させるパートナーです。
                 </p>
-                <div className="flex flex-row gap-4 mb-8 justify-center lg:justify-start">
+                <div className="flex flex-row gap-4 mb-8 justify-center lg:justify-start 2xl:justify-center">
                   <Link href="/contact">
                     <Button
                       size="lg"
