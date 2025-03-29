@@ -61,12 +61,6 @@ export const validCategories: WorkCategory[] = [
   "ui-ux",
   "graphic",
   "motion",
-  "natural-food-branding",
-  "green-app-ui",
-  "able-corp-website",
-  "urban-style-branding",
-  "tech-innovation-website",
-  "health-app-ux",
 ];
 
 // 有効なカテゴリかチェックする関数
