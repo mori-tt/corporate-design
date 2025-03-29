@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 
 const services = [
   {
@@ -97,20 +98,7 @@ export default function ServicesPage() {
                           key={feature}
                           className="flex items-center text-neutral-700 text-sm"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="mr-2"
-                          >
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
+                          <Check size={16} className="mr-2" />
                           {feature}
                         </li>
                       ))}

@@ -39,11 +39,6 @@ const accessInfo = [
       </>
     ),
   },
-  // {
-  //   icon: <Mail className="text-black" />,
-  //   title: "メール",
-  //   content: "info@designstudio.jp",
-  // },
 ];
 
 const transportationInfo = [

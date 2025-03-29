@@ -8,15 +8,16 @@ import {
   Award,
   PenTool,
   Film,
-  Scissors,
   MessageSquare,
   Users,
   ClipboardEdit,
-  Pipette,
   Layers,
   Clapperboard,
   Play,
-  Upload,
+  MonitorSmartphone,
+  Sparkle,
+  Monitor,
+  Volume2,
 } from "lucide-react";
 
 // サービス詳細のデータ
@@ -24,7 +25,8 @@ const services = {
   web: {
     title: "Webデザイン",
     description: "企業のブランド価値を高めるWebサイトの企画から制作まで",
-    image: "/services/web-design.jpg",
+    image:
+      "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     features: ["レスポンシブデザイン", "SEO対策", "高速な読み込み速度"],
     process: [
       {
@@ -73,7 +75,8 @@ const services = {
   branding: {
     title: "ブランディング",
     description: "企業のブランド価値を高める戦略立案と実行",
-    image: "/services/branding.jpg",
+    image:
+      "https://images.unsplash.com/photo-1531329466522-1075f0e4f23a?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     features: ["ブランドアイデンティティ設計", "ブランドガイドライン作成"],
     process: [
       {
@@ -84,7 +87,7 @@ const services = {
       },
       {
         title: "コンセプト開発",
-        icon: <PenTool size={24} />,
+        icon: <Sparkle size={24} />,
         description:
           "ブランドストーリー、コアバリュー、パーソナリティを開発し、独自のポジショニングを確立します。",
       },
@@ -121,7 +124,8 @@ const services = {
   ui: {
     title: "UI/UXデザイン",
     description: "ユーザー体験を重視したインターフェースデザイン",
-    image: "/services/ui-ux.jpg",
+    image:
+      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     features: [
       "ワイヤーフレーム作成",
       "プロトタイプ制作",
@@ -142,7 +146,7 @@ const services = {
       },
       {
         title: "UIデザイン",
-        icon: <Pipette size={24} />,
+        icon: <MonitorSmartphone size={24} />,
         description:
           "視覚的要素やインタラクションを設計し、一貫性のあるUIシステムを構築します。",
       },
@@ -173,7 +177,8 @@ const services = {
   graphic: {
     title: "グラフィックデザイン",
     description: "ブランドの視覚的表現を制作",
-    image: "/services/graphic.jpg",
+    image:
+      "https://images.unsplash.com/photo-1516131206008-dd041a9764fd?q=80&w=2360&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     features: ["パンフレットデザイン", "ポスター制作", "パッケージデザイン"],
     process: [
       {
@@ -184,13 +189,13 @@ const services = {
       },
       {
         title: "コンセプト開発",
-        icon: <PenTool size={24} />,
+        icon: <Sparkle size={24} />,
         description:
           "複数のデザインコンセプトをスケッチし、クライアントと方向性を確認します。",
       },
       {
         title: "デザイン制作",
-        icon: <Scissors size={24} />,
+        icon: <Monitor size={24} />,
         description:
           "選択されたコンセプトをもとに、詳細なデザインを制作し、素材を整理します。",
       },
@@ -227,7 +232,8 @@ const services = {
   motion: {
     title: "モーションデザイン",
     description: "動きのあるビジュアルで魅力的なコンテンツを制作",
-    image: "/services/motion.jpg",
+    image:
+      "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?q=80&w=2330&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     features: [
       "アニメーションロゴ",
       "プロモーションビデオ",
@@ -254,7 +260,7 @@ const services = {
       },
       {
         title: "サウンドと効果の追加",
-        icon: <Upload size={24} />,
+        icon: <Volume2 size={24} />,
         description:
           "音楽やサウンドエフェクトを追加し、視覚効果と組み合わせて完成度を高めます。",
       },
@@ -324,7 +330,7 @@ export default function CategoryPage({ category }: CategoryPageProps) {
             <div className="hidden lg:flex items-center justify-center">
               <div className="relative w-full h-[400px] rounded-xl overflow-hidden">
                 <img
-                  src={`/services/${category}-hero.jpg`}
+                  src={service.image}
                   alt={service.title}
                   className="absolute w-full h-full object-cover"
                 />
@@ -380,11 +386,15 @@ export default function CategoryPage({ category }: CategoryPageProps) {
                 key={step.title}
                 className="relative p-6 bg-neutral-50 rounded-lg"
               >
-                <div className="text-4xl mb-4">{step.icon}</div>
+                <div className="flex justify-center items-center text-4xl my-8">
+                  {step.icon}
+                </div>
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-black text-white rounded-full flex items-center justify-center">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-bold mb-4 mt-4">{step.title}</h3>
+                <h3 className="text-xl font-bold mb-4 mt-4 text-center">
+                  {step.title}
+                </h3>
                 <p className="text-neutral-600">{step.description}</p>
               </div>
             ))}

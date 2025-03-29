@@ -1,6 +1,11 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CategoryPage from "./CategoryPage";
+import {
+  generateCategoryParams,
+  generateImageParams,
+  isImageRequest,
+} from "@/components/staticPageHelpers";
 
 // 静的生成設定
 export const dynamic = "force-static";
@@ -34,27 +39,13 @@ const imagePatterns = [
   "-3.jpg", // ギャラリー画像3
 ];
 
-// パラメータの型を定義
-type CategoryParam = {
-  category: string;
-};
-
 // 静的生成のためのパラメータ
 export async function generateStaticParams() {
   // カテゴリページのパラメータ
-  const categoryParams: CategoryParam[] = validCategories.map((category) => ({
-    category,
-  }));
+  const categoryParams = generateCategoryParams(validCategories);
 
-  // 画像パスのパラメータ - すべてのプロジェクトのすべての画像パターン
-  const imageParams: CategoryParam[] = [];
-  validCategories.forEach((category) => {
-    imagePatterns.forEach((pattern) => {
-      imageParams.push({
-        category: `${category}${pattern}`,
-      });
-    });
-  });
+  // 画像パスのパラメータ
+  const imageParams = generateImageParams(validCategories, imagePatterns);
 
   return [...categoryParams, ...imageParams];
 }
@@ -67,7 +58,7 @@ export default async function Page({
   const { category } = await params;
 
   // 画像リクエストの場合は404を返さない
-  if (category.endsWith(".jpg")) {
+  if (isImageRequest(category)) {
     return null;
   }
 
