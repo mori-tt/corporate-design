@@ -2,70 +2,81 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CategoryPage from "./CategoryPage";
 import {
-  generateCategoryParams,
-  generateImageParams,
+  generateAllParams,
   isImageRequest,
-} from "@/components/staticPageHelpers";
+} from "@/components/helpers/pageHelpers";
+import {
+  validCategories,
+  isValidWorkCategory,
+  categoryTitles,
+} from "@/data/works";
 
-// 静的生成設定
+// 静的生成の設定
 export const dynamic = "force-static";
 export const revalidate = false;
 
-export const metadata: Metadata = {
-  title: "実績 | DESIGN STUDIO",
-  description: "DESIGN STUDIOの実績一覧をご覧いただけます。",
-};
-
-// プロジェクトIDとその画像パスの完全なリスト
-const validCategories = [
-  "web-design",
-  "branding",
-  "ui-ux",
-  "graphic",
-  "motion",
-  "natural-food-branding",
-  "green-app-ui",
-  "able-corp-website",
-  "urban-style-branding",
-  "tech-innovation-website",
-  "health-app-ux",
-];
-
-// プロジェクト詳細ページで使用する画像のパターン
-const imagePatterns = [
-  ".jpg", // メイン画像
-  "-1.jpg", // ギャラリー画像1
-  "-2.jpg", // ギャラリー画像2
-  "-3.jpg", // ギャラリー画像3
-];
-
-// 静的生成のためのパラメータ
+// 静的パス生成
 export async function generateStaticParams() {
-  // カテゴリページのパラメータ
-  const categoryParams = generateCategoryParams(validCategories);
-
-  // 画像パスのパラメータ
-  const imageParams = generateImageParams(validCategories, imagePatterns);
-
-  return [...categoryParams, ...imageParams];
+  return generateAllParams({
+    categories: validCategories,
+    imagePatterns: ["opengraph-image", "twitter-image", "icon"],
+    specialFiles: ["not-found"],
+  });
 }
 
+// メタデータ生成
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const category = resolvedParams.category;
+
+  // 有効なカテゴリの場合はメタデータを返す
+  if (isValidWorkCategory(category)) {
+    return {
+      title: `${categoryTitles[category] || category} | Corporate Design`,
+      description: `${
+        categoryTitles[category] || category
+      }に関する実績とプロジェクト事例をご紹介します。`,
+    };
+  }
+
+  // 特殊ファイル（not-found等）の場合もメタデータを返す
+  if (category === "not-found") {
+    return {
+      title: "Not Found | Corporate Design",
+      description: "ページが見つかりませんでした。",
+    };
+  }
+
+  // 無効なカテゴリの場合はデフォルトを返す
+  return {
+    title: "Works | Corporate Design",
+    description: "私たちの実績とプロジェクト事例をご紹介します。",
+  };
+}
+
+// ページコンポーネント
 export default async function Page({
   params,
 }: {
   params: Promise<{ category: string }>;
 }) {
-  const { category } = await params;
+  const resolvedParams = await params;
+  const category = resolvedParams.category;
 
-  // 画像リクエストの場合は404を返さない
+  // 画像リクエストの場合は空のdivを返す
   if (isImageRequest(category)) {
-    return null;
+    return <div />;
   }
 
-  // カテゴリが有効でない場合は404を返す
-  if (!validCategories.includes(category)) {
-    notFound();
+  // カテゴリが有効な場合はCategoryPageを表示
+  if (isValidWorkCategory(category)) {
+    return <CategoryPage category={category} />;
   }
 
-  return <CategoryPage category={category} />;
+  // それ以外の場合は404ページを表示
+  return notFound();
 }

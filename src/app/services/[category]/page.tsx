@@ -2,56 +2,41 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CategoryPage from "./CategoryPage";
 import {
-  generateCategoryParams,
-  generateImageParams,
-  generateSpecialFileParams,
+  generateAllParams,
   isImageRequest,
-} from "@/components/staticPageHelpers";
+} from "@/components/helpers/pageHelpers";
+import {
+  services,
+  categoryTitles,
+  isValidServiceCategory,
+  ServiceCategory,
+} from "@/data/services";
 
 // 静的生成設定
 export const dynamic = "force-static";
 export const revalidate = false;
 
-// サービスカテゴリのリスト
-const serviceCategories = ["web", "branding", "ui", "graphic", "motion"];
-
-// サービス名とタイトルの対応
-const serviceTitles: Record<string, string> = {
-  web: "Webデザイン",
-  branding: "ブランディング",
-  ui: "UI/UXデザイン",
-  graphic: "グラフィックデザイン",
-  motion: "モーションデザイン",
-};
-
 // 画像パターンの定義
-const imagePatterns = [
-  ".jpg", // メイン画像と同様のパターンを使用
-];
-
-// 特別なファイル（SVGなど）
+const imagePatterns = [".jpg"];
 const specialFiles = ["logo.svg"];
 
 // 静的生成のためのパスを生成
 export async function generateStaticParams() {
-  // カテゴリページのパラメータ
-  const categoryParams = generateCategoryParams(serviceCategories);
-
-  // 画像パスのパラメータ
-  const imageParams = generateImageParams(serviceCategories, imagePatterns);
-
-  // 特別なファイル用のパラメータ
-  const specialFileParams = generateSpecialFileParams(specialFiles);
-
-  return [...categoryParams, ...imageParams, ...specialFileParams];
+  return generateAllParams({
+    categories: Object.keys(services),
+    imagePatterns,
+    specialFiles,
+  });
 }
 
 // メタデータ生成
-export async function generateMetadata(props: {
+export async function generateMetadata({
+  params,
+}: {
   params: Promise<{ category: string }>;
 }): Promise<Metadata> {
-  const params = await props.params;
-  const category = params.category;
+  const resolvedParams = await params;
+  const category = resolvedParams.category;
 
   // 画像リクエストの場合はデフォルトのメタデータを返す
   if (isImageRequest(category)) {
@@ -62,7 +47,7 @@ export async function generateMetadata(props: {
   }
 
   // 有効なカテゴリかチェック
-  if (!serviceCategories.includes(category)) {
+  if (!isValidServiceCategory(category)) {
     return {
       title: "サービスが見つかりません | DESIGN STUDIO",
       description: "お探しのサービスは存在しません。",
@@ -70,8 +55,10 @@ export async function generateMetadata(props: {
   }
 
   return {
-    title: `${serviceTitles[category]} | DESIGN STUDIO`,
-    description: `DESIGN STUDIOの${serviceTitles[category]}サービスについてご紹介します。`,
+    title: `${categoryTitles[category as ServiceCategory]} | DESIGN STUDIO`,
+    description: `DESIGN STUDIOの${
+      categoryTitles[category as ServiceCategory]
+    }サービスについてご紹介します。`,
   };
 }
 
@@ -81,7 +68,8 @@ export default async function Page({
 }: {
   params: Promise<{ category: string }>;
 }) {
-  const { category } = await params;
+  const resolvedParams = await params;
+  const category = resolvedParams.category;
 
   // 画像リクエストの場合は何も返さない
   if (isImageRequest(category)) {
@@ -89,7 +77,7 @@ export default async function Page({
   }
 
   // 有効なカテゴリかチェック
-  if (!serviceCategories.includes(category)) {
+  if (!isValidServiceCategory(category)) {
     notFound();
   }
 
