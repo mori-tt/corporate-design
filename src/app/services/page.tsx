@@ -3,59 +3,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-
-const services = [
-  {
-    title: "Webデザイン",
-    description: "企業のブランド価値を高めるWebサイトの企画から制作まで",
-    image:
-      "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "web",
-    features: ["レスポンシブデザイン", "SEO対策", "高速な読み込み速度"],
-  },
-  {
-    title: "ブランディング",
-    description: "企業のブランド価値を高める戦略立案と実行",
-    image:
-      "https://images.unsplash.com/photo-1531329466522-1075f0e4f23a?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "branding",
-    features: ["ブランドアイデンティティ設計", "ブランドガイドライン作成"],
-  },
-  {
-    title: "UI/UXデザイン",
-    description: "ユーザー体験を重視したインターフェースデザイン",
-    image:
-      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "ui",
-    features: [
-      "ワイヤーフレーム作成",
-      "プロトタイプ制作",
-      "ユーザビリティテスト",
-    ],
-  },
-  {
-    title: "グラフィックデザイン",
-    description: "ブランドの視覚的表現を制作",
-    image:
-      "https://images.unsplash.com/photo-1516131206008-dd041a9764fd?q=80&w=2360&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "graphic",
-    features: ["パンフレットデザイン", "ポスター制作", "パッケージデザイン"],
-  },
-  {
-    title: "モーションデザイン",
-    description: "動きのある魅力的なコンテンツ制作",
-    image:
-      "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?q=80&w=2330&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "motion",
-    features: [
-      "プロモーションビデオ",
-      "アニメーション制作",
-      "モーショングラフィックス",
-    ],
-  },
-];
+import { services as servicesData } from "@/data/services";
 
 export default function ServicesPage() {
+  // servicesオブジェクトを配列に変換
+  const servicesArray = Object.values(servicesData);
   return (
     <>
       {/* Hero Section */}
@@ -75,7 +27,7 @@ export default function ServicesPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
+            {servicesArray.map((service) => (
               <div key={service.title} className="group">
                 <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
                   <div className="aspect-video relative overflow-hidden">
@@ -93,15 +45,16 @@ export default function ServicesPage() {
                       {service.description}
                     </p>
                     <ul className="space-y-2 mb-4">
-                      {service.features.slice(0, 2).map((feature) => (
-                        <li
-                          key={feature}
-                          className="flex items-center text-neutral-700 text-sm"
-                        >
-                          <Check size={16} className="mr-2" />
-                          {feature}
-                        </li>
-                      ))}
+                      {service.features &&
+                        service.features.slice(0, 2).map((feature) => (
+                          <li
+                            key={feature}
+                            className="flex items-center text-neutral-700 text-sm"
+                          >
+                            <Check size={16} className="mr-2" />
+                            {feature}
+                          </li>
+                        ))}
                     </ul>
                     <div className="mt-auto">
                       <Link href={`/services/${service.category}`}>

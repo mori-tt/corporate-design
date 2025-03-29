@@ -7,7 +7,6 @@ import {
 } from "@/components/helpers/pageHelpers";
 import {
   services,
-  categoryTitles,
   isValidServiceCategory,
   ServiceCategory,
 } from "@/data/services";
@@ -55,9 +54,9 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${categoryTitles[category as ServiceCategory]} | DESIGN STUDIO`,
+    title: `${services[category as ServiceCategory].title} | DESIGN STUDIO`,
     description: `DESIGN STUDIOの${
-      categoryTitles[category as ServiceCategory]
+      services[category as ServiceCategory].title
     }サービスについてご紹介します。`,
   };
 }

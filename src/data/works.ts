@@ -11,6 +11,12 @@ export type WorkCategory =
   | "urban-style-branding"
   | "tech-innovation-website"
   | "health-app-ux";
+// | "natural-food-branding"
+// | "green-app-ui"
+// | "able-corp-website"
+// | "urban-style-branding"
+// | "tech-innovation-website"
+// | "health-app-ux";
 
 // プロジェクト詳細の型定義
 export interface ProjectDetail {
@@ -29,9 +35,11 @@ export interface ProjectDetail {
 // 作品情報の型定義
 export interface WorkInfo {
   title: string;
+  slug: string;
   description: string;
   image: string;
   category: string;
+  categoryjp: string;
   year: string;
   client: string;
   details: ProjectDetail;
@@ -39,11 +47,11 @@ export interface WorkInfo {
 
 // カテゴリとタイトルのマッピング
 export const categoryTitles: Partial<Record<WorkCategory, string>> = {
-  "web-design": "Webデザイン実績",
-  branding: "ブランディング実績",
-  "ui-ux": "UI/UXデザイン実績",
-  graphic: "グラフィックデザイン実績",
-  motion: "モーションデザイン実績",
+  "web-design": "Webデザイン",
+  branding: "ブランディング",
+  "ui-ux": "UI/UXデザイン",
+  graphic: "グラフィックデザイン",
+  motion: "モーションデザイン",
 };
 
 // 有効なカテゴリリスト
@@ -72,10 +80,12 @@ export function isValidWorkCategory(
 export const works: Record<string, WorkInfo> = {
   "natural-food-branding": {
     title: "ナチュラルフードブランディング",
+    slug: "natural-food-branding",
     description: "オーガニック食品ブランドのブランディングとパッケージデザイン",
     image:
       "https://images.unsplash.com/photo-1555530001-acee1750bdcc?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "natural-food-branding",
+    category: "branding",
+    categoryjp: "ブランディング",
     year: "2022",
     client: "Natural Foods, Inc.",
     details: {
@@ -113,10 +123,12 @@ export const works: Record<string, WorkInfo> = {
   },
   "green-app-ui": {
     title: "グリーンアプリUI",
+    slug: "green-app-ui",
     description: "環境配慮型アプリケーションのUIデザイン",
     image:
       "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "green-app-ui",
+    category: "ui-ux",
+    categoryjp: "UI/UXデザイン",
     year: "2023",
     client: "Green Solutions Co., Ltd.",
     details: {
@@ -149,10 +161,12 @@ export const works: Record<string, WorkInfo> = {
   },
   "able-corp-website": {
     title: "エイブルコーポレーションウェブサイト",
+    slug: "able-corp-website",
     description: "企業ウェブサイトのリニューアルデザイン",
     image:
       "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2555&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "able-corp-website",
+    category: "web-design",
+    categoryjp: "Webデザイン",
     year: "2023",
     client: "Able Corporation",
     details: {
@@ -185,10 +199,12 @@ export const works: Record<string, WorkInfo> = {
   },
   "urban-style-branding": {
     title: "アーバンスタイルブランディング",
+    slug: "urban-style-branding",
     description: "都市型ライフスタイルブランドのブランディング",
     image:
       "https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "urban-style-branding",
+    category: "branding",
+    categoryjp: "ブランディング",
     year: "2022",
     client: "URBAN Co.",
     details: {
@@ -226,10 +242,12 @@ export const works: Record<string, WorkInfo> = {
   },
   "tech-innovation-website": {
     title: "テックイノベーションウェブサイト",
+    slug: "tech-innovation-website",
     description: "テクノロジー企業のウェブサイトデザイン",
     image:
       "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "tech-innovation-website",
+    category: "web-design",
+    categoryjp: "Webデザイン",
     year: "2022",
     client: "Tech Innovation Inc.",
     details: {
@@ -267,9 +285,11 @@ export const works: Record<string, WorkInfo> = {
   },
   "health-app-ux": {
     title: "ヘルスアプリUX",
+    slug: "health-app-ux",
     description: "ヘルスケアアプリケーションのUXデザイン",
     image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
-    category: "health-app-ux",
+    category: "ui-ux",
+    categoryjp: "UI/UXデザイン",
     year: "2021",
     client: "Health+ Inc.",
     details: {

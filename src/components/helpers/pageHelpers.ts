@@ -29,7 +29,7 @@ export function generateAllParams(config: PageConfig): CategoryParam[] {
   const imageParams: CategoryParam[] = [];
   categories.forEach((category) => {
     imagePatterns.forEach((pattern) => {
-      imageParams.push({ category: `${category}${pattern}` });
+      imageParams.push({ category: `${category}/${pattern}` });
     });
   });
 

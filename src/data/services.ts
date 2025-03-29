@@ -40,6 +40,7 @@ export type IconName =
 // サービス情報の型
 export interface ServiceInfo {
   title: string;
+  category: ServiceCategory;
   description: string;
   image: string;
   features: string[];
@@ -60,6 +61,7 @@ export interface ServiceInfo {
 export const services: Record<ServiceCategory, ServiceInfo> = {
   web: {
     title: "Webデザイン",
+    category: "web",
     description: "企業のブランド価値を高めるWebサイトの企画から制作まで",
     image:
       "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -110,6 +112,7 @@ export const services: Record<ServiceCategory, ServiceInfo> = {
   },
   branding: {
     title: "ブランディング",
+    category: "branding",
     description: "企業のブランド価値を高める戦略立案と実行",
     image:
       "https://images.unsplash.com/photo-1531329466522-1075f0e4f23a?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -159,6 +162,7 @@ export const services: Record<ServiceCategory, ServiceInfo> = {
   },
   ui: {
     title: "UI/UXデザイン",
+    category: "ui",
     description: "ユーザー体験を重視したインターフェースデザイン",
     image:
       "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -212,6 +216,7 @@ export const services: Record<ServiceCategory, ServiceInfo> = {
   },
   graphic: {
     title: "グラフィックデザイン",
+    category: "graphic",
     description: "ブランドの視覚的表現を制作",
     image:
       "https://images.unsplash.com/photo-1516131206008-dd041a9764fd?q=80&w=2360&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -267,6 +272,7 @@ export const services: Record<ServiceCategory, ServiceInfo> = {
   },
   motion: {
     title: "モーションデザイン",
+    category: "motion",
     description: "動きのあるビジュアルで魅力的なコンテンツを制作",
     image:
       "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?q=80&w=2330&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -327,13 +333,13 @@ export const services: Record<ServiceCategory, ServiceInfo> = {
 };
 
 // サービス名とタイトルの対応
-export const categoryTitles: Record<ServiceCategory, string> = {
-  web: "Webデザイン",
-  branding: "ブランディング",
-  ui: "UI/UXデザイン",
-  graphic: "グラフィックデザイン",
-  motion: "モーションデザイン",
-};
+// export const categoryTitles: Record<ServiceCategory, string> = {
+//   web: "Webデザイン",
+//   branding: "ブランディング",
+//   ui: "UI/UXデザイン",
+//   graphic: "グラフィックデザイン",
+//   motion: "モーションデザイン",
+// };
 
 // 有効なカテゴリかチェックする関数
 export function isValidServiceCategory(
