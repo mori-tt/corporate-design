@@ -5,7 +5,13 @@
 /**
  * サイト名
  */
-export const SITE_NAME = "DESIGN STUDIO";
+export const SITE_NAME: string = "DESIGN STUDIO";
+
+/**
+ * サイトのベースURL
+ * デプロイする際に実際のドメインに変更が必要です
+ */
+export const BASE_URL: string = "https://mori-tt.github.io/corporate-design/";
 
 /**
  * サイトの基本情報
@@ -61,4 +67,29 @@ export const SPECIAL_PAGES = {
     title: "Not Found",
     description: "ページが見つかりませんでした。",
   },
+};
+
+/**
+ * Google Analytics 測定ID
+ * GA4の測定IDを設定してください (G-XXXXXXXXXX形式)
+ * 実際に使用する際は適切なIDを設定してください
+ * 例: 'G-XXXXXXXXXX'
+ */
+export const GA_MEASUREMENT_ID: string = "";
+
+/**
+ * Google Search Console検証コード
+ * Search Consoleから提供される検証コードを設定します
+ * 実際に使用する際は適切なコードを設定してください
+ * 例: 'google-site-verification=XXXXXXXXXXXXXXXXXXXX'
+ */
+export const GSC_VERIFICATION_CODE: string = "";
+
+/**
+ * アナリティクス設定をまとめたオブジェクト
+ */
+export const ANALYTICS = {
+  MEASUREMENT_ID: GA_MEASUREMENT_ID,
+  VERIFICATION_CODE: GSC_VERIFICATION_CODE,
+  VERIFICATION_PATH: "/google-verification",
 };

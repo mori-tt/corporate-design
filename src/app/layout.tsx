@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SITE_BASE_INFO } from "@/constants/site";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { SITE_BASE_INFO, ANALYTICS } from "@/constants/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +19,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: `${SITE_BASE_INFO.title} | ${SITE_BASE_INFO.description}`,
   description: SITE_BASE_INFO.fullDescription,
+  // Google Search Console メタタグ検証
+  // 実際に使用する場合はANALYTICS.VERIFICATION_CODEに適切な値を設定してください
+  ...(ANALYTICS.VERIFICATION_CODE && {
+    verification: {
+      google: ANALYTICS.VERIFICATION_CODE,
+    },
+  }),
 };
 
 export default function RootLayout({
@@ -27,6 +35,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        {/* Google Analytics コンポーネント */}
+        <GoogleAnalytics measurementId={ANALYTICS.MEASUREMENT_ID} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
