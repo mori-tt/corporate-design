@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import ClientAnalytics from "@/components/ClientAnalytics";
 import { SITE_BASE_INFO, ANALYTICS } from "@/constants/site";
 
 const geistSans = Geist({
@@ -35,13 +35,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <head>
-        {/* Google Analytics コンポーネント */}
-        <GoogleAnalytics measurementId={ANALYTICS.MEASUREMENT_ID} />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
+        {/* Google Analytics コンポーネント - クライアントコンポーネント経由でロード */}
+        {ANALYTICS.MEASUREMENT_ID && (
+          <ClientAnalytics measurementId={ANALYTICS.MEASUREMENT_ID} />
+        )}
         <Header />
         <main className="flex-grow pt-16">{children}</main>
         <Footer />

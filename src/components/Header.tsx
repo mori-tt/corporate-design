@@ -3,8 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import MobileMenu from "./MobileMenu";
+import dynamic from "next/dynamic";
 import { Menu } from "lucide-react";
+
+// MobileMenuコンポーネントを動的インポートして遅延読み込み
+const MobileMenu = dynamic(() => import("./MobileMenu"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -40,7 +46,7 @@ const Header = () => {
             </Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Link href="/contact">
+            <Link href="/contact" aria-label="お問い合わせ">
               <Button
                 variant="outline"
                 size="sm"
@@ -59,10 +65,12 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-      />
+      {isMobileMenuOpen && (
+        <MobileMenu
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
+        />
+      )}
     </>
   );
 };

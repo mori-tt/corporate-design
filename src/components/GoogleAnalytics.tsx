@@ -1,6 +1,20 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+
+// windowにgtagプロパティを追加するための型拡張
+declare global {
+  interface Window {
+    gtag: (
+      command: string,
+      target: string,
+      config?: Record<string, unknown>
+    ) => void;
+    dataLayer: unknown[];
+  }
+}
 
 /**
  * Google Analytics (GA4) 実装用コンポーネント
@@ -23,6 +37,18 @@ export default function GoogleAnalytics({
 }: {
   measurementId: string;
 }) {
+  const pathname = usePathname();
+
+  // useEffectはconditionalに呼び出すことはできないため、if文の外側で呼び出す
+  useEffect(() => {
+    // 測定IDが設定されていない場合は何もしない
+    if (!measurementId || !pathname || !window.gtag) return;
+
+    window.gtag("config", measurementId, {
+      page_path: pathname,
+    });
+  }, [pathname, measurementId]);
+
   // 測定IDが設定されていない場合は何も表示しない
   if (!measurementId) return null;
 
@@ -31,15 +57,14 @@ export default function GoogleAnalytics({
       {/* Google Analytics スクリプト */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${measurementId}', {
-            send_page_view: true,
             page_path: window.location.pathname,
           });
         `}

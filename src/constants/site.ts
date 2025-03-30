@@ -51,6 +51,15 @@ export const COMPANY_SECTION = {
 };
 
 /**
+ * アクセスセクション
+ */
+export const ACCESS_SECTION = {
+  title: "アクセス",
+  description:
+    "DESIGN STUDIOへのアクセス方法。渋谷駅から徒歩5分の好立地にオフィスを構えています。お気軽にお越しください。",
+};
+
+/**
  * お問い合わせセクション
  */
 export const CONTACT_SECTION = {
