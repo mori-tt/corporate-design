@@ -90,7 +90,8 @@ export const GA_MEASUREMENT_ID: string = "";
  * Google Search Console検証コード
  * Search Consoleから提供される検証コードを設定します
  * 実際に使用する際は適切なコードを設定してください
- * 例: 'google-site-verification=XXXXXXXXXXXXXXXXXXXX'
+ * メタタグ検証方式を採用（HTMLファイル検証方式は削除）
+ * 例: 'XXXXXXXXXXXXXXXXXXXX'
  */
 export const GSC_VERIFICATION_CODE: string = "";
 
@@ -100,5 +101,4 @@ export const GSC_VERIFICATION_CODE: string = "";
 export const ANALYTICS = {
   MEASUREMENT_ID: GA_MEASUREMENT_ID,
   VERIFICATION_CODE: GSC_VERIFICATION_CODE,
-  VERIFICATION_PATH: "/google-verification",
 };
