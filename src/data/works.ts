@@ -1,4 +1,6 @@
-// プロジェクトカテゴリの型定義
+/**
+ * プロジェクトカテゴリの型定義
+ */
 export type WorkCategory =
   | "web-design"
   | "branding"
@@ -11,14 +13,10 @@ export type WorkCategory =
   | "urban-style-branding"
   | "tech-innovation-website"
   | "health-app-ux";
-// | "natural-food-branding"
-// | "green-app-ui"
-// | "able-corp-website"
-// | "urban-style-branding"
-// | "tech-innovation-website"
-// | "health-app-ux";
 
-// プロジェクト詳細の型定義
+/**
+ * プロジェクト詳細の型定義
+ */
 export interface ProjectDetail {
   overview: string;
   challenge: string;
@@ -32,7 +30,9 @@ export interface ProjectDetail {
   }[];
 }
 
-// 作品情報の型定義
+/**
+ * 作品情報の型定義
+ */
 export interface WorkInfo {
   title: string;
   slug: string;
@@ -45,7 +45,9 @@ export interface WorkInfo {
   details: ProjectDetail;
 }
 
-// カテゴリとタイトルのマッピング
+/**
+ * カテゴリとタイトルのマッピング
+ */
 export const categoryTitles: Partial<Record<WorkCategory, string>> = {
   "web-design": "Webデザイン",
   branding: "ブランディング",
@@ -54,7 +56,9 @@ export const categoryTitles: Partial<Record<WorkCategory, string>> = {
   motion: "モーションデザイン",
 };
 
-// 有効なカテゴリリスト
+/**
+ * 有効なカテゴリリスト
+ */
 export const validCategories: WorkCategory[] = [
   "web-design",
   "branding",
@@ -63,14 +67,20 @@ export const validCategories: WorkCategory[] = [
   "motion",
 ];
 
-// 有効なカテゴリかチェックする関数
+/**
+ * 有効なカテゴリかチェックする関数
+ * @param category チェック対象のカテゴリ
+ * @returns 有効なカテゴリであればtrue
+ */
 export function isValidWorkCategory(
   category: string
 ): category is WorkCategory {
   return validCategories.includes(category as WorkCategory);
 }
 
-// 作品データ
+/**
+ * 作品データ
+ */
 export const works: Record<string, WorkInfo> = {
   "natural-food-branding": {
     title: "ナチュラルフードブランディング",

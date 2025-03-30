@@ -16,10 +16,14 @@ import {
   Volume2,
 } from "lucide-react";
 
-// サービスカテゴリの型定義
+/**
+ * サービスカテゴリの型定義
+ */
 export type ServiceCategory = "web" | "branding" | "ui" | "graphic" | "motion";
 
-// アイコン名の型定義
+/**
+ * アイコン名の型定義
+ */
 export type IconName =
   | "Globe"
   | "Palette"
@@ -37,7 +41,9 @@ export type IconName =
   | "Monitor"
   | "Volume2";
 
-// サービス情報の型
+/**
+ * サービス情報の型定義
+ */
 export interface ServiceInfo {
   title: string;
   category: ServiceCategory;
@@ -57,7 +63,9 @@ export interface ServiceInfo {
   icon: IconName;
 }
 
-// サービスデータ
+/**
+ * サービスデータのマッピング
+ */
 export const services: Record<ServiceCategory, ServiceInfo> = {
   web: {
     title: "Webデザイン",
@@ -332,23 +340,20 @@ export const services: Record<ServiceCategory, ServiceInfo> = {
   },
 };
 
-// サービス名とタイトルの対応
-// export const categoryTitles: Record<ServiceCategory, string> = {
-//   web: "Webデザイン",
-//   branding: "ブランディング",
-//   ui: "UI/UXデザイン",
-//   graphic: "グラフィックデザイン",
-//   motion: "モーションデザイン",
-// };
-
-// 有効なカテゴリかチェックする関数
+/**
+ * 有効なカテゴリかチェックする関数
+ * @param category チェック対象のカテゴリ
+ * @returns 有効なカテゴリであればtrue
+ */
 export function isValidServiceCategory(
   category: string
 ): category is ServiceCategory {
   return Object.keys(services).includes(category);
 }
 
-// アイコンマッピング（コンポーネント側で使用）
+/**
+ * アイコンコンポーネントのマッピング
+ */
 export const iconComponents = {
   Globe,
   Palette,

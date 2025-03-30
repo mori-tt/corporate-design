@@ -8,6 +8,40 @@ export type CategoryParam = {
 };
 
 /**
+ * 全パラメータを生成するための入力インターフェース
+ */
+export interface AllParamsOptions {
+  categories: string[];
+  imagePatterns?: string[];
+  specialFiles?: string[];
+}
+
+/**
+ * すべてのタイプのパラメータを一括生成する
+ * @param options カテゴリ、画像パターン、特別ファイルを含むオプション
+ * @returns 生成されたすべてのパラメータ配列
+ */
+export function generateAllParams(options: AllParamsOptions): CategoryParam[] {
+  const { categories, imagePatterns = [], specialFiles = [] } = options;
+
+  // カテゴリパラメータを生成
+  const categoryParams = generateCategoryParams(categories);
+
+  // 画像パラメータを生成（画像パターンが存在する場合）
+  const imageParams =
+    imagePatterns.length > 0
+      ? generateImageParams(categories, imagePatterns)
+      : [];
+
+  // 特別ファイルパラメータを生成（特別ファイルが存在する場合）
+  const specialParams =
+    specialFiles.length > 0 ? generateSpecialFileParams(specialFiles) : [];
+
+  // すべてのパラメータを結合して返す
+  return [...categoryParams, ...imageParams, ...specialParams];
+}
+
+/**
  * カテゴリパラメータを生成する
  * @param categories 対象のカテゴリリスト
  * @returns カテゴリページのパラメータ配列

@@ -2,18 +2,34 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { services, ServiceCategory, iconComponents } from "@/data/services";
+import {
+  services,
+  ServiceCategory,
+  iconComponents,
+  isValidServiceCategory,
+} from "@/data/services";
 
 type CategoryPageProps = {
   category: string;
 };
 
 export default function CategoryPage({ category }: CategoryPageProps) {
-  const service = services[category as ServiceCategory];
-
-  if (!service) {
-    return <div>サービスが見つかりません</div>;
+  // カテゴリが有効かチェック
+  if (!isValidServiceCategory(category)) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold">サービスが見つかりません</h1>
+          <Link href="/services" className="mt-4 inline-block">
+            <Button>サービス一覧に戻る</Button>
+          </Link>
+        </div>
+      </div>
+    );
   }
+
+  // 有効なカテゴリの場合、サービス情報を取得
+  const service = services[category as ServiceCategory];
 
   // アイコン名からコンポーネントを取得する関数
   const getIconComponent = (iconName: string) => {

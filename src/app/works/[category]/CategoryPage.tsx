@@ -12,7 +12,7 @@ export default function CategoryPage({ category }: CategoryPageProps) {
   // カテゴリに対応する作品詳細を取得
   const work = works[category];
 
-  // 存在しない場合は空のコンテンツを表示
+  // 作品が存在しない場合
   if (!work) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">

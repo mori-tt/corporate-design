@@ -4,7 +4,7 @@ import CategoryPage from "./CategoryPage";
 import {
   generateAllParams,
   isImageRequest,
-} from "@/components/helpers/pageHelpers";
+} from "@/components/staticPageHelpers";
 import {
   services,
   isValidServiceCategory,
@@ -28,12 +28,15 @@ export async function generateStaticParams() {
   });
 }
 
+// パラメータの型定義
+type PageProps = {
+  params: Promise<{ category: string }>;
+};
+
 // メタデータ生成
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ category: string }>;
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const category = resolvedParams.category;
 
@@ -62,11 +65,7 @@ export async function generateMetadata({
 }
 
 // ページコンポーネント
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ category: string }>;
-}) {
+export default async function Page({ params }: PageProps) {
   const resolvedParams = await params;
   const category = resolvedParams.category;
 

@@ -4,7 +4,7 @@ import CategoryPage from "./CategoryPage";
 import {
   generateAllParams,
   isImageRequest,
-} from "@/components/helpers/pageHelpers";
+} from "@/components/staticPageHelpers";
 import {
   validCategories,
   isValidWorkCategory,
@@ -17,7 +17,7 @@ export const dynamic = "force-static";
 export const revalidate = false;
 
 // パラメータの型
-type Props = {
+type PageProps = {
   params: Promise<{ category: string }>;
 };
 
@@ -34,9 +34,10 @@ export function generateStaticParams() {
   });
 }
 
-// メタデータ生成 - async化
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  // paramsをawaitして値を取得
+// メタデータ生成
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const category = resolvedParams.category;
 
@@ -74,9 +75,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// ページコンポーネント - async化
-async function Page({ params }: Props) {
-  // paramsをawaitして値を取得
+// ページコンポーネント
+export default async function Page({ params }: PageProps) {
   const resolvedParams = await params;
   const category = resolvedParams.category;
 
@@ -93,5 +93,3 @@ async function Page({ params }: Props) {
   // それ以外の場合は404ページを表示
   return notFound();
 }
-
-export default Page;
