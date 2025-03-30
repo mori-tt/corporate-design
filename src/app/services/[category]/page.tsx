@@ -1,30 +1,28 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CategoryPage from "./CategoryPage";
-import {
-  generateAllParams,
-  isImageRequest,
-} from "@/components/staticPageHelpers";
+import { generateAllParams, isImageRequest } from "@/utils/staticPageHelpers";
 import {
   services,
   isValidServiceCategory,
   ServiceCategory,
 } from "@/data/services";
+import { SITE_NAME } from "@/constants/site";
+import {
+  createDetailMetadata,
+  createImageRequestMetadata,
+} from "@/utils/metadata";
 
 // 静的生成設定
 export const dynamic = "force-static";
 export const revalidate = false;
 
-// 画像パターンの定義
-const imagePatterns = [".jpg"];
-const specialFiles = ["logo.svg"];
-
 // 静的生成のためのパスを生成
 export async function generateStaticParams() {
   return generateAllParams({
     categories: Object.keys(services),
-    imagePatterns,
-    specialFiles,
+    imagePatterns: [".jpg"],
+    specialFiles: ["logo.svg"],
   });
 }
 
@@ -42,26 +40,25 @@ export async function generateMetadata({
 
   // 画像リクエストの場合はデフォルトのメタデータを返す
   if (isImageRequest(category)) {
-    return {
-      title: "DESIGN STUDIO",
-      description: "DESIGN STUDIOのサービス",
-    };
+    return createImageRequestMetadata(SITE_NAME);
   }
 
   // 有効なカテゴリかチェック
   if (!isValidServiceCategory(category)) {
-    return {
-      title: "サービスが見つかりません | DESIGN STUDIO",
-      description: "お探しのサービスは存在しません。",
-    };
+    return createDetailMetadata(
+      "サービスが見つかりません",
+      "お探しのサービスは存在しません。",
+      SITE_NAME
+    );
   }
 
-  return {
-    title: `${services[category as ServiceCategory].title} | DESIGN STUDIO`,
-    description: `DESIGN STUDIOの${
+  return createDetailMetadata(
+    services[category as ServiceCategory].title,
+    `DESIGN STUDIOの${
       services[category as ServiceCategory].title
     }サービスについてご紹介します。`,
-  };
+    SITE_NAME
+  );
 }
 
 // ページコンポーネント

@@ -1,10 +1,11 @@
 import { Metadata } from "next";
+import { WORKS_SECTION, SITE_NAME } from "@/constants/site";
+import { createMetadata } from "@/utils/metadata";
 
-export const metadata: Metadata = {
-  title: "実績 | DESIGN STUDIO",
-  description:
-    "DESIGN STUDIOの実績紹介。様々な業種・業界のクライアント様と協力し、ビジネスの成長と成功を支援してきた実績をご紹介します。",
-};
+export const metadata: Metadata = createMetadata({
+  title: `${WORKS_SECTION.title} | ${SITE_NAME}`,
+  description: WORKS_SECTION.description,
+});
 
 export default function WorksLayout({
   children,

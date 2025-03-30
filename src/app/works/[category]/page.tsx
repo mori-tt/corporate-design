@@ -1,16 +1,20 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CategoryPage from "./CategoryPage";
-import {
-  generateAllParams,
-  isImageRequest,
-} from "@/components/staticPageHelpers";
+import { generateAllParams, isImageRequest } from "@/utils/staticPageHelpers";
 import {
   validCategories,
   isValidWorkCategory,
   categoryTitles,
   works,
 } from "@/data/works";
+import { SITE_NAME, SPECIAL_PAGES } from "@/constants/site";
+import {
+  createDetailMetadata,
+  createCategoryMetadata,
+  createSpecialMetadata,
+  createImageRequestMetadata,
+} from "@/utils/metadata";
 
 // 静的生成の設定
 export const dynamic = "force-static";
@@ -41,38 +45,43 @@ export async function generateMetadata({
   const resolvedParams = await params;
   const category = resolvedParams.category;
 
+  // 画像リクエストの場合はデフォルトのメタデータを返す
+  if (isImageRequest(category)) {
+    return createImageRequestMetadata(SITE_NAME);
+  }
+
   // スラッグがworksオブジェクトに存在する場合、その作品のメタデータを返す
   if (works[category]) {
     const work = works[category];
-    return {
-      title: `${work.title} | Corporate Design`,
-      description: work.description,
-    };
+    return createDetailMetadata(work.title, work.description, SITE_NAME);
   }
 
   // 有効なカテゴリの場合はメタデータを返す
   if (isValidWorkCategory(category)) {
-    return {
-      title: `${categoryTitles[category] || category} | Corporate Design`,
-      description: `${
-        categoryTitles[category] || category
-      }に関する実績とプロジェクト事例をご紹介します。`,
-    };
+    return createCategoryMetadata(
+      category,
+      categoryTitles[category] || category,
+      SITE_NAME,
+      (categoryTitle) =>
+        `${categoryTitle}に関する実績とプロジェクト事例をご紹介します。`
+    );
   }
 
   // 特殊ファイル（not-found等）の場合もメタデータを返す
   if (category === "not-found") {
-    return {
-      title: "Not Found | Corporate Design",
-      description: "ページが見つかりませんでした。",
-    };
+    return createSpecialMetadata(
+      SPECIAL_PAGES.notFound.title,
+      SPECIAL_PAGES.notFound.description,
+      SITE_NAME
+    );
   }
 
   // 無効なカテゴリの場合はデフォルトを返す
-  return {
-    title: "Works | Corporate Design",
-    description: "私たちの実績とプロジェクト事例をご紹介します。",
-  };
+  return createDetailMetadata(
+    "Works",
+    "私たちの実績とプロジェクト事例をご紹介します。",
+    SITE_NAME
+  );
 }
 
 // ページコンポーネント

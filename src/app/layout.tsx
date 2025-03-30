@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SITE_BASE_INFO } from "@/constants/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DESIGN STUDIO | モダンでクリエイティブなデザイン会社",
-  description:
-    "最先端のデザインで企業の成長をサポートするデザイン会社。Webデザイン、UIデザイン、ブランディングなど幅広いサービスを提供しています。",
+  title: `${SITE_BASE_INFO.title} | ${SITE_BASE_INFO.description}`,
+  description: SITE_BASE_INFO.fullDescription,
 };
 
 export default function RootLayout({

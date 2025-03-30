@@ -1,10 +1,11 @@
 import { Metadata } from "next";
+import { SERVICES_SECTION, SITE_NAME } from "@/constants/site";
+import { createMetadata } from "@/utils/metadata";
 
-export const metadata: Metadata = {
-  title: "サービス | DESIGN STUDIO",
-  description:
-    "DESIGN STUDIOが提供するサービスのご紹介。Webデザイン、UIデザイン、ブランディング、マーケティングなど幅広いデザインサービスで企業の成長をサポートします。",
-};
+export const metadata: Metadata = createMetadata({
+  title: `${SERVICES_SECTION.title} | ${SITE_NAME}`,
+  description: SERVICES_SECTION.description,
+});
 
 export default function ServicesLayout({
   children,

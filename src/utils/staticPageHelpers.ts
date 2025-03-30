@@ -1,27 +1,16 @@
 /**
  * 静的ページ生成のためのヘルパーユーティリティ
  */
-
-// パラメータの型を定義
-export type CategoryParam = {
-  category: string;
-};
-
-/**
- * 全パラメータを生成するための入力インターフェース
- */
-export interface AllParamsOptions {
-  categories: string[];
-  imagePatterns?: string[];
-  specialFiles?: string[];
-}
+import { CategoryParam, StaticParamsOptions } from "@/types/common";
 
 /**
  * すべてのタイプのパラメータを一括生成する
  * @param options カテゴリ、画像パターン、特別ファイルを含むオプション
  * @returns 生成されたすべてのパラメータ配列
  */
-export function generateAllParams(options: AllParamsOptions): CategoryParam[] {
+export function generateAllParams(
+  options: StaticParamsOptions
+): CategoryParam[] {
   const { categories, imagePatterns = [], specialFiles = [] } = options;
 
   // カテゴリパラメータを生成
@@ -98,4 +87,17 @@ export function isImageRequest(path: string): boolean {
     path.endsWith(".gif") ||
     path.endsWith(".webp")
   );
+}
+
+/**
+ * 特殊ファイルかどうかを判定する
+ * @param path ファイルパス
+ * @param specialFiles 特殊ファイルのリスト
+ * @returns 特殊ファイルならtrue
+ */
+export function isSpecialFile(
+  path: string,
+  specialFiles: string[] = []
+): boolean {
+  return specialFiles.includes(path);
 }
