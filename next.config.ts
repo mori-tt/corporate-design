@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // RSCリクエストを無効化し、静的ファイルのみを使用
+  experimental: {
+    // App Routerでの静的エクスポート最適化
+    serverComponentsExternalPackages: [],
+  },
+  // 404エラーを修正するためのカスタム設定
+  trailingSlash: true,
 };
 
 export default nextConfig;

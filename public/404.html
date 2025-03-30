@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>DESIGN STUDIO | ページが見つかりません</title>
+    <script type="text/javascript">
+      // リダイレクトを処理するためのシングルページアプリケーション対応
+      var pathSegmentsToKeep = 1;
+
+      var l = window.location;
+      var path = l.pathname
+        .replace(/^\/+/, "")
+        .split("/")
+        .slice(pathSegmentsToKeep)
+        .join("/");
+      var redirectUrl =
+        l.protocol +
+        "//" +
+        l.hostname +
+        (l.port ? ":" + l.port : "") +
+        "/corporate-design" +
+        (path.length > 0 ? "/" + path : "") +
+        (l.search || "") +
+        (l.hash || "");
+
+      // リダイレクト
+      if (l.pathname.indexOf("/corporate-design") !== 0) {
+        window.location.replace(redirectUrl);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>ページが見つかりませんでした</h1>
+    <p>お探しのページは存在しないか、別の場所に移動した可能性があります。</p>
+    <p><a href="/corporate-design">ホームページに戻る</a></p>
+  </body>
+</html>
