@@ -10,10 +10,9 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   // RSCリクエストを無効化し、静的ファイルのみを使用
-  experimental: {
-    // App Routerでの静的エクスポート最適化
-    serverComponentsExternalPackages: [],
-  },
+  // App Routerでの静的エクスポート最適化
+  serverExternalPackages: ["some-package"],
+
   // 404エラーを修正するためのカスタム設定
   trailingSlash: true,
 };
