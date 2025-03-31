@@ -100,7 +100,7 @@ export default function CategoryPage({ category }: CategoryPageProps) {
 
                 <div className="mb-6">
                   <h4 className="text-sm text-neutral-500 mb-2">カテゴリー</h4>
-                  <p className="font-medium">{work.categoryjp}</p>
+                  <p className="font-medium">{work.categoriesjp.join(" · ")}</p>
                 </div>
 
                 <div>

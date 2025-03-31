@@ -38,7 +38,7 @@ const WorkList = ({ works }: { works: WorkInfo[] }) => {
           </div>
           <div className="p-4">
             <div className="mb-2 text-sm text-neutral-500">
-              {work.categoryjp}
+              {work.categoriesjp.join(" · ")}
             </div>
             <h3 className="text-lg font-medium">{work.title}</h3>
           </div>
@@ -54,11 +54,11 @@ export default function WorksPage() {
     WorkCategory | "all"
   >("all");
 
-  // selectedCategoryに基づいてワークをフィルタリング
+  // selectedCategoryに基づいてワークをフィルタリング（複数カテゴリ対応）
   const filteredWorks =
     selectedCategory === "all"
       ? worksArray
-      : worksArray.filter((work) => work.category === selectedCategory);
+      : worksArray.filter((work) => work.categories.includes(selectedCategory));
 
   return (
     <div className="container mx-auto px-4 py-12">

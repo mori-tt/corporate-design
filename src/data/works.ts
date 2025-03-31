@@ -34,12 +34,12 @@ export interface ProjectDetail {
  * 作品情報の型定義
  */
 export interface WorkInfo {
-  title: string;
   slug: string;
-  description: string;
+  title: string;
+  categories: WorkCategory[];
+  categoriesjp: string[];
   image: string;
-  category: string;
-  categoryjp: string;
+  description: string;
   year: string;
   client: string;
   details: ProjectDetail;
@@ -88,8 +88,8 @@ export const works: Record<string, WorkInfo> = {
     description: "オーガニック食品ブランドのブランディングとパッケージデザイン",
     image:
       "https://images.unsplash.com/photo-1555530001-acee1750bdcc?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "branding",
-    categoryjp: "ブランディング",
+    categories: ["branding", "graphic"],
+    categoriesjp: ["ブランディング", "グラフィックデザイン"],
     year: "2022",
     client: "Natural Foods, Inc.",
     details: {
@@ -131,8 +131,8 @@ export const works: Record<string, WorkInfo> = {
     description: "環境配慮型アプリケーションのUIデザイン",
     image:
       "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "ui-ux",
-    categoryjp: "UI/UXデザイン",
+    categories: ["ui-ux", "graphic"],
+    categoriesjp: ["UI/UXデザイン", "グラフィックデザイン"],
     year: "2023",
     client: "Green Solutions Co., Ltd.",
     details: {
@@ -169,8 +169,8 @@ export const works: Record<string, WorkInfo> = {
     description: "企業ウェブサイトのリニューアルデザイン",
     image:
       "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2555&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "web-design",
-    categoryjp: "Webデザイン",
+    categories: ["web-design", "ui-ux"],
+    categoriesjp: ["Webデザイン", "UI/UXデザイン"],
     year: "2023",
     client: "Able Corporation",
     details: {
@@ -207,8 +207,8 @@ export const works: Record<string, WorkInfo> = {
     description: "都市型ライフスタイルブランドのブランディング",
     image:
       "https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "branding",
-    categoryjp: "ブランディング",
+    categories: ["branding", "graphic"],
+    categoriesjp: ["ブランディング", "グラフィックデザイン"],
     year: "2022",
     client: "URBAN Co.",
     details: {
@@ -250,8 +250,8 @@ export const works: Record<string, WorkInfo> = {
     description: "テクノロジー企業のウェブサイトデザイン",
     image:
       "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "web-design",
-    categoryjp: "Webデザイン",
+    categories: ["web-design", "ui-ux"],
+    categoriesjp: ["Webデザイン", "UI/UXデザイン"],
     year: "2022",
     client: "Tech Innovation Inc.",
     details: {
@@ -292,8 +292,8 @@ export const works: Record<string, WorkInfo> = {
     slug: "health-app-ux",
     description: "ヘルスケアアプリケーションのUXデザイン",
     image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg",
-    category: "ui-ux",
-    categoryjp: "UI/UXデザイン",
+    categories: ["ui-ux", "graphic"],
+    categoriesjp: ["UI/UXデザイン", "グラフィックデザイン"],
     year: "2021",
     client: "Health+ Inc.",
     details: {
