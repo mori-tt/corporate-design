@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# デザイン会社のコーポレートサイト
 
-## Getting Started
+このプロジェクトは、デザイン会社向けのコーポレートサイトです。モダンで洗練された UI/UX を提供し、企業のブランドイメージを効果的に伝えることを目的としています。
 
-First, run the development server:
+## 技術スタック
+
+- **フレームワーク**: [Next.js](https://nextjs.org) - React ベースの高速なウェブアプリケーションフレームワーク
+- **言語**: [TypeScript](https://www.typescriptlang.org) - 型安全な JavaScript スーパーセット
+- **デザインシステム**: [shadcn ui](https://ui.shadcn.com/) - 美しく再利用可能なコンポーネント
+- **スタイリング**: [TailwindCSS](https://tailwindcss.com) - ユーティリティファーストの CSS フレームワーク
+
+## 主な機能
+
+- 高速なページ表示を実現する静的生成
+- 洗練された UI コンポーネントによるモダンなデザイン
+- レスポンシブデザインによる多様なデバイス対応
+- SEO 最適化された構造
+- Next.js の先進機能を活用した柔軟なルーティングとパフォーマンス向上
+
+## 開発ガイド
+
+### 前提条件
+
+- Node.js 20.0.0 以上
+- npm または yarn
+
+### インストール
+
+依存関係をインストールするには、以下のコマンドを実行してください。
+
+````bash
+npm install
+
+### 開発サーバの起動
+
+ローカル環境で開発サーバを起動するには、以下のコマンドを実行してください。
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+ブラウザで [http://localhost:3000](http://localhost:3000) にアクセスすると、サイトを確認できます。
+
+## デプロイガイド
+
+このプロジェクトは GitHub Pages へのデプロイを前提とした静的サイト生成を採用しています。
+
+### 静的サイトの生成
+
+Next.js の静的生成機能を使用してサイトをビルドします:
+
+```bash
+npm run build
+````
+
+最新の Next.js では、`next export` は非推奨となり、`next build` 時に自動的に静的ファイルが生成されます。ビルド後、プロジェクトルートに「out」フォルダが生成されます。
+
+### ローカルでの静的サイトの確認
+
+生成された静的サイトをローカルで確認するには、以下のコマンドを実行してください：
+
+```bash
+npx serve out
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+通常は http://localhost:5000 などの URL でサイトを確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### GitHub Pages へのデプロイ
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+このプロジェクトは「out」フォルダの内容を GitHub Pages にデプロイする設計です:
 
-## Learn More
+1. リポジトリに「gh-pages」ブランチを作成
+2. 「out」フォルダの内容を「gh-pages」ブランチにプッシュ
+3. GitHub のリポジトリ設定で GitHub Pages を有効化し、「gh-pages」ブランチをデプロイ元として選択
 
-To learn more about Next.js, take a look at the following resources:
+#### 自動デプロイ (オプション)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+GitHub Actions を使った自動デプロイも設定しています。`.github/workflows/nextjs.yml` ファイルを作成し、ワークフローを定義しています:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+## 追加リソース
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js ドキュメント](https://nextjs.org/docs)
+- [shadcn ui ドキュメント](https://ui.shadcn.com/docs)
+- [TailwindCSS ドキュメント](https://tailwindcss.com/docs)
+```
