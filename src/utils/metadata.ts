@@ -1,84 +1,59 @@
 import { Metadata } from "next";
 import { PageMetadata } from "@/types/common";
+import { BASE_URL, SITE_NAME } from "@/constants/site";
 
 /**
- * ベースとなるメタデータを生成する
+ * メタデータを生成する汎用関数
  * @param options メタデータのオプション
+ * @param baseTitle サイトのベースタイトル（省略時はSITE_NAMEを使用）
+ * @param separator タイトルの区切り文字（省略時は " | "）
  * @returns 生成されたメタデータ
  */
-export function createMetadata(options: PageMetadata): Metadata {
-  const { title, description } = options;
-
-  return {
-    title,
-    description,
-  };
-}
-
-/**
- * カテゴリページ用のメタデータを生成する
- * @param category カテゴリ名
- * @param categoryTitle カテゴリの表示名
- * @param baseSiteTitle サイトのベースタイトル
- * @param templateFn 説明文のテンプレート関数
- * @returns 生成されたメタデータ
- */
-export function createCategoryMetadata(
-  category: string,
-  categoryTitle: string,
-  baseSiteTitle: string,
-  templateFn: (categoryTitle: string) => string
+export function createMetadata(
+  options: PageMetadata,
+  baseTitle?: string,
+  separator: string = " | "
 ): Metadata {
-  return {
-    title: `${categoryTitle} | ${baseSiteTitle}`,
-    description: templateFn(categoryTitle),
-  };
-}
+  const { title, description, ...restOptions } = options;
+  const baseSiteTitle = baseTitle || SITE_NAME;
 
-/**
- * 詳細ページ用のメタデータを生成する
- * @param title タイトル
- * @param description 説明文
- * @param baseSiteTitle サイトのベースタイトル
- * @returns 生成されたメタデータ
- */
-export function createDetailMetadata(
-  title: string,
-  description: string,
-  baseSiteTitle: string
-): Metadata {
-  return {
-    title: `${title} | ${baseSiteTitle}`,
+  // タイトルが空でなく、baseTitleが指定されている場合は結合
+  const fullTitle = baseTitle ? `${title}${separator}${baseSiteTitle}` : title;
+
+  // 基本メタデータ
+  const metadata: Metadata = {
+    title: fullTitle,
     description,
+    ...restOptions,
   };
-}
 
-/**
- * 404ページなどの特殊ページ用のメタデータを生成する
- * @param title タイトル
- * @param description 説明文
- * @param baseSiteTitle サイトのベースタイトル
- * @returns 生成されたメタデータ
- */
-export function createSpecialMetadata(
-  title: string,
-  description: string,
-  baseSiteTitle: string
-): Metadata {
-  return {
-    title: `${title} | ${baseSiteTitle}`,
-    description,
-  };
-}
+  // Open Graph設定がない場合はデフォルト設定
+  if (!options.openGraph) {
+    metadata.openGraph = {
+      title: fullTitle,
+      description,
+      siteName: baseSiteTitle,
+      url: BASE_URL,
+      type: "website",
+    };
+  }
 
-/**
- * 画像リクエスト用のデフォルトメタデータを生成する
- * @param baseSiteTitle サイトのベースタイトル
- * @returns 生成されたメタデータ
- */
-export function createImageRequestMetadata(baseSiteTitle: string): Metadata {
-  return {
-    title: baseSiteTitle,
-    description: `${baseSiteTitle}のイメージ`,
-  };
+  // Twitter Card設定がない場合はデフォルト設定
+  if (!options.twitter) {
+    metadata.twitter = {
+      card: "summary_large_image",
+      title: fullTitle,
+      description,
+    };
+  }
+
+  // canonicalがない場合はデフォルト設定
+  if (!options.canonical && !options.alternates?.canonical) {
+    metadata.alternates = {
+      ...(options.alternates || {}),
+      canonical: BASE_URL,
+    };
+  }
+
+  return metadata;
 }

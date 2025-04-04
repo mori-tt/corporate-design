@@ -8,10 +8,7 @@ import {
   ServiceCategory,
 } from "@/data/services";
 import { SITE_NAME } from "@/constants/site";
-import {
-  createDetailMetadata,
-  createImageRequestMetadata,
-} from "@/utils/metadata";
+import { createMetadata } from "@/utils/metadata";
 
 // 静的生成設定
 export const dynamic = "force-static";
@@ -40,23 +37,30 @@ export async function generateMetadata({
 
   // 画像リクエストの場合はデフォルトのメタデータを返す
   if (isImageRequest(category)) {
-    return createImageRequestMetadata(SITE_NAME);
+    return createMetadata({
+      title: SITE_NAME,
+      description: `${SITE_NAME}のイメージ`,
+    });
   }
 
   // 有効なカテゴリかチェック
   if (!isValidServiceCategory(category)) {
-    return createDetailMetadata(
-      "サービスが見つかりません",
-      "お探しのサービスは存在しません。",
+    return createMetadata(
+      {
+        title: "サービスが見つかりません",
+        description: "お探しのサービスは存在しません。",
+      },
       SITE_NAME
     );
   }
 
-  return createDetailMetadata(
-    services[category as ServiceCategory].title,
-    `DESIGN STUDIOの${
-      services[category as ServiceCategory].title
-    }サービスについてご紹介します。`,
+  return createMetadata(
+    {
+      title: services[category as ServiceCategory].title,
+      description: `DESIGN STUDIOの${
+        services[category as ServiceCategory].title
+      }サービスについてご紹介します。`,
+    },
     SITE_NAME
   );
 }

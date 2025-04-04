@@ -9,12 +9,7 @@ import {
   works,
 } from "@/data/works";
 import { SITE_NAME, SPECIAL_PAGES } from "@/constants/site";
-import {
-  createDetailMetadata,
-  createCategoryMetadata,
-  createSpecialMetadata,
-  createImageRequestMetadata,
-} from "@/utils/metadata";
+import { createMetadata } from "@/utils/metadata";
 
 // 静的生成の設定
 export const dynamic = "force-static";
@@ -47,39 +42,53 @@ export async function generateMetadata({
 
   // 画像リクエストの場合はデフォルトのメタデータを返す
   if (isImageRequest(category)) {
-    return createImageRequestMetadata(SITE_NAME);
+    return createMetadata({
+      title: SITE_NAME,
+      description: `${SITE_NAME}のイメージ`,
+    });
   }
 
   // スラッグがworksオブジェクトに存在する場合、その作品のメタデータを返す
   if (works[category]) {
     const work = works[category];
-    return createDetailMetadata(work.title, work.description, SITE_NAME);
+    return createMetadata(
+      {
+        title: work.title,
+        description: work.description,
+      },
+      SITE_NAME
+    );
   }
 
   // 有効なカテゴリの場合はメタデータを返す
   if (isValidWorkCategory(category)) {
-    return createCategoryMetadata(
-      category,
-      categoryTitles[category] || category,
-      SITE_NAME,
-      (categoryTitle) =>
-        `${categoryTitle}に関する実績とプロジェクト事例をご紹介します。`
+    const categoryTitle = categoryTitles[category] || category;
+    return createMetadata(
+      {
+        title: categoryTitle,
+        description: `${categoryTitle}に関する実績とプロジェクト事例をご紹介します。`,
+      },
+      SITE_NAME
     );
   }
 
   // 特殊ファイル（not-found等）の場合もメタデータを返す
   if (category === "not-found") {
-    return createSpecialMetadata(
-      SPECIAL_PAGES.notFound.title,
-      SPECIAL_PAGES.notFound.description,
+    return createMetadata(
+      {
+        title: SPECIAL_PAGES.notFound.title,
+        description: SPECIAL_PAGES.notFound.description,
+      },
       SITE_NAME
     );
   }
 
   // 無効なカテゴリの場合はデフォルトを返す
-  return createDetailMetadata(
-    "Works",
-    "私たちの実績とプロジェクト事例をご紹介します。",
+  return createMetadata(
+    {
+      title: "Works",
+      description: "私たちの実績とプロジェクト事例をご紹介します。",
+    },
     SITE_NAME
   );
 }
