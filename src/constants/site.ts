@@ -72,6 +72,11 @@ export const CONTACT_SECTION = {
 };
 
 /**
+ * お問い合わせフォームURL
+ */
+export const CONTACT_FORM_URL = "https://forms.gle/rPF2k3FC2jpzqeU7A";
+
+/**
  * 特殊ページ
  */
 export const SPECIAL_PAGES = {
